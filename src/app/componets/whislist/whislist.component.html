@@ -1,0 +1,40 @@
+
+<div class="max-w-7xl mx-auto p-6 mt-6">
+  <h1 *ngIf="wishlist.length > 0" class="text-3xl text-center font-serif mb-20 pt-20">My Wishlist</h1>
+  <div *ngIf="wishlist.length===0" class="flex flex-col items-center justify-center pt-10">
+    <div class="wish-empty mt-4">
+      <img src="assets/gallery/dribble_shot_62_4x.jpg" alt="Empty wish" class="empty-wish-image">
+      <h1 class="text-2xl font-semibold text-red-900">Your wish list is empty !</h1>
+      <h1 class="mt-2">It seems like you don't have any wishes here. Make a wish.</h1>
+  </div>
+    <button routerLink="/shop" class="rounded-full bg-red-900 text-white font-bold text-sm py-4 px-8 mt-5">
+      Start Shopping
+    </button>
+  </div>
+  
+  <div class="max-w-7xl mx-auto p-6 mt-4">
+    <div *ngIf="wishlist.length > 0" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div *ngFor="let product of wishlist" class="p-4 product-card flex flex-col">
+        <div class="relative">
+          <img *ngIf="product.imageSrc" [src]="product.imageSrc" alt="Product Image" class="w-full h-48 object-cover rounded-t-lg mb-4 image-zoom" />
+        </div>
+        <div class="flex-grow flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-bold">{{ product.name }}</h3>
+            <p class="text-gray-700">{{ product.size }}</p>
+            <p class="text-gray-700 font-semibold">Rs.{{ product.price }}</p>
+          </div>
+          <div class="flex mt-4">
+            <button (click)="removeFromWishlist(product)" class="bg-white hover:bg-black text-black hover:text-white font-bold py-1 px-2 rounded" style="border: 3px solid black">
+              Remove
+            </button>
+            <button [disabled]="product.addedToCart" (click)="!product.addedToCart && addToCart(product)" class="bg-white hover:bg-black text-black hover:text-white font-bold py-1 px-2 rounded ml-4" style="border: 3px solid black">
+              {{ product.addedToCart ? 'Thank you' : 'Add to Cart' }}
+            </button>
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+ 

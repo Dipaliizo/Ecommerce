@@ -1,0 +1,49 @@
+<div class="max-w-6xl mx-auto p-20">
+    <h2 class="text-2xl font-bold mb-6 text-center">User Table</h2>
+    
+    <div class="flex mb-4 justify-start">
+        <input 
+            type="text" 
+            placeholder="Search by First Name or Email" 
+            [(ngModel)]="searchTerm" 
+            class="border border-gray-300 p-2 rounded flex-grow mr-2" 
+            style="max-width: 300px;"
+        />
+        <button 
+            (click)="filterUsers()" 
+            class="bg-red-900 text-white p-2 rounded mr-2"
+        >
+            Search
+        </button>
+        <button 
+            *ngIf="searchTerm" 
+            (click)="clearSearch()" 
+            class="bg-gray-800 text-white p-2 rounded"
+        >
+            Clear Search
+        </button>
+    </div>
+
+    <table class="min-w-full bg-white border border-gray-300">
+      <thead>
+        <tr class="bg-red-900 text-white uppercase text-sm leading-normal">
+          <th class="py-3 px-4 text-left">ID</th>
+          <th class="py-3 px-4 text-left">First Name</th>
+          <th class="py-3 px-4 text-left">Last Name</th>
+          <th class="py-3 px-4 text-left">Email</th>
+        </tr>
+      </thead>
+      <tbody class="text-black text-sm font-light">
+        <tr *ngFor="let user of filteredUsers" class="border-b border-gray-300 hover:bg-gray-100">
+          <td class="py-3 px-4">{{ user.id }}</td>
+          <td class="py-3 px-4">{{ user.firstname }}</td>
+          <td class="py-3 px-4">{{ user.lastname }}</td>
+          <td class="py-3 px-4">{{ user.email }}</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div *ngIf="filteredUsers.length === 0" class="text-center text-black mt-4">
+      No users registered.
+    </div>
+</div>

@@ -1,0 +1,71 @@
+.payment-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.payment-box {
+  margin-bottom: 20px;
+}
+
+.payment-box label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.payment-box input[type="radio"] {
+  margin-right: 10px;
+}
+
+.payment-description {
+  margin-top: 10px;
+}
+
+.billing-box {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.billing-box label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.billing-box input[type="radio"] {
+  margin-right: 10px;
+}
+
+/* .scrollable-form {
+  height: 100vh; 
+  overflow-y: auto;
+  padding-right: 15px;
+} */
+
+/* .scrollable-form {
+  overflow-y: auto;
+  max-height: 100vh; 
+}
+
+.scrollable-form {
+  scrollbar-width: thin; 
+}
+
+.scrollable-form::-webkit-scrollbar {
+  width: 1px;
+}
+
+.scrollable-form::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+.scrollable-form::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 10px; 
+}
+
+.scrollable-form::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+} */

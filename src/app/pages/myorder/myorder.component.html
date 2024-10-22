@@ -1,0 +1,49 @@
+<div *ngIf="ordersWithItems.length > 0; else emptyCart" class="mt-10 mb-16">
+  <h2 class="text-2xl font-bold mb-16 mt-28 flex justify-center">My Orders</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <ng-container *ngFor="let order of ordersWithItems">
+      <div class="border p-4 rounded-lg bg-white shadow-md">
+        <div class="mb-4 flex justify-between items-center">
+          <div>
+            <strong>Date:</strong> {{ order.date }}<br />
+            <strong>Order ID:</strong> {{ order.orderId }}<br />
+            <strong>Sold to:</strong> {{ order.payer }}<br />
+            <strong>Status:</strong> {{ order.status }}
+          </div>
+          <!-- <div class="ml-4 cursor-pointer" [routerLink]="['/orders', orderId, userId]"> -->
+            <div class="ml-4 cursor-pointer" routerLink="/shop">
+            <img src="assets/logo/right-arrow.png" class="w-6 h-6">
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div *ngFor="let item of order.items" class="flex items-center mb-4 border-t pt-2">
+            <img [src]="item.imageSrc" alt="{{ item.name }}" class="w-16 h-16 object-cover mr-4 cursor-pointer" routerLink="/shop"/>
+            <div>
+              <div>{{ item.name }}</div>
+              <div>
+                <strong>Price:</strong> {{ item.price }}<br />
+                <strong>Quantity:</strong> {{ item.quantity }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<div class="flex items-center justify-center">
+  <ng-template #emptyCart>
+    <div class="flex flex-col items-center justify-center pt-14 mb-6">
+      <div class="cart-empty mt-4">
+          <img src="assets/gallery/cart-empty.jpg" alt="Empty Cart" class="empty-cart-image">
+          <h1 class="text-2xl font-semibold text-black">There is no order</h1>
+          <!-- <h1 class="mt-2">Must add items to the cart before you proceed to check out</h1> -->
+      </div>
+      <button routerLink="/shop" class="rounded-full bg-red-900 text-white text-sm  font-bold py-4 px-8 mt-5 mb-6">
+        Start Shopping
+      </button>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,22 @@
+@media (max-width: 768px) {
+    #login-popup {
+      width: 90%;
+      margin: 0 auto;
+    }
+    #login-popup .relative {
+      padding: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #login-popup {
+      width: 95%;
+      margin: 0 auto;
+    }
+    #login-popup .relative {
+      padding: 10px;
+    }
+    #login-popup .text-2xl {
+      font-size: 1.5rem;
+    }
+  }

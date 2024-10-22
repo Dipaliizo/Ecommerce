@@ -1,0 +1,54 @@
+.navbar {
+  height: 60px; 
+  width: 100%; 
+  position: fixed; 
+  top: 0; 
+  z-index: 10;
+  transition: margin-left 0.3s ease; 
+}
+
+.sidebar {
+  position: fixed; 
+  left: 0; 
+  height: 100vh; 
+  width: 240px; 
+  background-color: black; 
+  transition: transform 0.3s ease; 
+  transform: translateX(-100%); 
+}
+
+.translate-x-0 {
+  transform: translateX(0); 
+}
+
+.-translate-x-full {
+  transform: translateX(-100%); 
+}
+
+.flex-1 {
+  transition: margin-left 0.3s ease;
+  padding-left: 0; 
+}
+
+.ml-64 {
+  margin-left: 200px; 
+}
+
+.hover-bg:hover {
+  background-color: rgba(217, 88, 88, 0.2);
+}
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+}
+
+h1 {
+  text-align: center;
+}
+a img {
+  vertical-align: middle; 
+  display: inline-block; 
+}

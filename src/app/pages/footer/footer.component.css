@@ -1,0 +1,28 @@
+/* Make the footer responsive */
+@media (max-width: 768px) {
+    .footer {
+      flex-direction: column;
+    }
+    .footer > div {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .footer ul {
+      flex-direction: column;
+    }
+    .footer li {
+      margin-bottom: 10px;
+    }
+    .footer img {
+      width: 50%;
+      margin: 20px auto;
+    }
+    .footer form {
+      flex-direction: column;
+    }
+    .footer button[type="submit"] {
+      width: 100%;
+    }
+  }
+
+  

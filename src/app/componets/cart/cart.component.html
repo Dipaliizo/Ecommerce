@@ -1,0 +1,65 @@
+<div class="max-w-7xl mx-auto p-6 mt-6">
+  <h1 *ngIf="cartItems.length > 0" class="text-4xl text-center font-serif mb-20 pt-20">Shopping bag</h1>
+  <div *ngIf="cartItems.length === 0" class="flex flex-col items-center justify-center pt-10">
+    <div class="cart-empty mt-4">
+        <img src="assets/gallery/empty-cart.jpg" alt="Empty Cart" class="empty-cart-image">
+        <h1 class="text-2xl font-semibold text-red-900">Your cart is empty !</h1>
+        <h1 class="mt-2">Must add items to the cart before you proceed to check out</h1>
+    </div>
+    <button routerLink="/shop" class="rounded-full bg-red-900 text-white text-sm  font-bold py-4 px-8 mt-5 mb-4">
+      Start Shopping
+    </button>
+  </div>
+  
+  <table *ngIf="cartItems.length > 0" class="w-full text-left">
+    <thead>
+      <tr>
+        <th class="px-4 py-2 text-lg font-semibold">Product</th>
+        <th class="px-4 py-2 text-lg font-semibold">Price</th>
+        <th class="px-4 py-2 text-lg font-semibold">Size</th>
+        <th class="px-4 py-2 text-lg font-semibold">Quantity</th>
+        <th class="px-4 py-2 text-lg font-semibold">Total</th>
+        <th class="px-4 py-2 text-lg font-semibold">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cartItems; let i = index" class="border-b border-gray-200">
+        <td class="px-4 py-2 flex items-center font-semibold text-2xl">
+          <img [src]="item.imageSrc" alt="Product Image" class="w-24 h-24 object-cover mr-4">
+          {{ item.name }}
+        </td>
+        <td class="px-4 py-2">Rs.{{ item.price }}</td>
+        <td class="px-4 py-2">{{ item.size }}</td>
+        <td class="px-4 py-2">
+          <div class="flex items-center">
+            <button (click)="decrementQuantity(i)" class="w-3 h-3 flex justify-center items-center">
+              <img src="assets/logo/minus.png" alt="Decrease">
+            </button>
+            <input type="text" [(ngModel)]="item.quantity" class="w-12 text-center mx-2" (ngModelChange)="updateQuantity(i)">
+            <button (click)="incrementQuantity(i)" class="w-3 h-3 flex justify-center items-center">
+              <img src="assets/logo/plus.png" alt="Increase">
+            </button>
+          </div>
+        </td>
+        <td class="px-4 py-2">Rs.{{ item.price * item.quantity }}</td>
+        <td class="px-4 py-2">
+          <button (click)="removeFromCart(i)" class="w-8 h-8">
+            <img src="assets/logo/cancel.png" alt="Remove">
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div *ngIf="cartItems.length > 0" class="flex flex-col items-end mt-8">
+    <h3 class="text-xl font-bold border-b border-gray-500">Total: Rs.{{ total }}</h3>
+    <button class="mt-6 bg-red-900 text-white py-4 px-20 rounded" routerLink="/checkout">CHECK OUT</button>
+  </div>
+  
+  <div>
+    <button *ngIf="cartItems.length > 0" class="border border-black text-gray-800 font-bold text-xl py-4 px-4 rounded flex items-center translate-y-[-50px]" routerLink="/shop">
+      <img src="assets/logo/left-chevron.png" class="w-8 h-4 px-1" alt="Continue Shopping">
+      Continue Shopping
+    </button>
+  </div>
+</div>

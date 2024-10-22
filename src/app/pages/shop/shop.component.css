@@ -1,0 +1,20 @@
+.heart-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .heart-btn img {
+    fill: #ccc;
+  }
+  
+  .heart-btn:hover img {
+    fill: #aaa;
+  }
+  
+  .heart-btn.clicked img {
+    fill: #fff;
+    background-color: #000;
+    border-radius: 50%;
+    padding: 4px;
+  }

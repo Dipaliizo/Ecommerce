@@ -1,0 +1,6 @@
+<app-navbar *ngIf="!isLoginPage"></app-navbar>
+<app-loading *ngIf="isLoading"></app-loading>
+<router-outlet>
+    <span class="loader" *ngIf="isLoading"></span>
+</router-outlet>
+<app-footer *ngIf="!isLoginPage"></app-footer>

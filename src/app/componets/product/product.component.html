@@ -1,0 +1,74 @@
+<div class="relative">
+  <!-- <img src="assets/logo/cancel.png" alt="cancel" class="absolute top-4 right-4 w-8 h-8 cursor-pointer" (click)="onCancel()"> -->
+
+  <div class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6 mt-24 mb-10 overflow-hidden">
+    <h2 class="text-2xl font-bold mb-4">Add Product</h2>
+    <div class="overflow-y-auto max-h-96"> 
+      <form (ngSubmit)="onSubmit(productForm)" #productForm="ngForm">
+        <div class="mb-4">
+          <label for="name" class="block text-gray-700">Product Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md"
+            [(ngModel)]="product.name"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label for="size" class="block text-gray-700">Size</label>
+          <input
+            type="text"
+            id="size"
+            name="size"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md"
+            [(ngModel)]="product.size"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label for="price" class="block text-gray-700">Price</label>
+          <input
+            type="text"
+            id="price"
+            name="price"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md"
+            [(ngModel)]="product.price"
+            (input)="validatePrice($event)"
+            required
+          />
+        </div>
+        
+        <div class="mb-4">
+          <label for="image" class="block text-gray-700">Product Image</label>
+          <input
+            type="file"
+            id="image"
+            name="image"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md"
+            (change)="onImageChange($event)"
+          />
+        </div>
+        <div *ngIf="product.imageSrc" class="mb-4">
+          <img [src]="product.imageSrc" alt="Product Image Preview" class="w-full h-auto rounded-md" />
+        </div>
+
+            <!-- Error messages -->
+            <div *ngIf="errorMessage" class="mb-4 text-red-500">
+              {{ errorMessage }}
+            </div>
+            <div *ngIf="imageErrorMessage" class="mb-4 text-red-500">
+              {{ imageErrorMessage }}
+            </div>
+            
+        <button
+          type="submit"
+          class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+        >
+          Add Product
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

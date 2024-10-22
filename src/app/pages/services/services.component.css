@@ -1,0 +1,11 @@
+.hover-effect {
+    transition: transform 0.2s; /* add transition effect */
+  }
+  
+  .hover-effect:hover {
+    transform: scale(1.1); /* scale up on hover */
+  }
+  
+  .hover-effect:active {
+    transform: scale(1.2); /* scale up more on click */
+  }

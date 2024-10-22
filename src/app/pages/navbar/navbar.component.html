@@ -1,0 +1,58 @@
+<nav class="sticky top-0 flex flex-wrap items-center justify-between p-2 bg-[#ffffff]">
+  <div class="flex items-center">
+    <img src="assets/Galore/PURE AND SURE-logo.jpg" alt="Logo" class="h-14 w-20 mr-1 cursor-pointer" routerLink="/adminlogin">
+    <div class="text-xl font-semibold">Organic</div>
+  </div>
+  <!-- main menu -->
+  <div class="toggle hidden w-full md:w-auto md:flex text-right text-bold mt-5 md:mt-0 md:border-none" [class.hidden]="isMenuVisible">  
+    <a routerLink="home" class="block md:inline-block  hover:text-orange-800 px-8 py-4 md:border-none text-lg font-semibold">Home</a>
+    <a routerLink="services" class="block md:inline-block hover:text-orange-800 px-8 py-4 md:border-none text-lg font-semibold">Services</a>
+    <a routerLink="shop" class="block md:inline-block  hover:text-orange-800 px-8 py-4 md:border-none text-lg font-semibold">Shop</a>
+    <a routerLink="gallery" class="block md:inline-block  hover:text-orange-800 px-8 py-4 md:border-none text-lg font-semibold">Gallery</a>
+    <a routerLink="about" class="block md:inline-block  hover:text-orange-800 px-8 py-4 md:border-none text-lg font-semibold">About us</a>    
+  </div>
+
+
+ <!--profile button -->
+ <div class="flex space-x-4">
+  <button routerLink="signin" *ngIf="!isLoggedIn ">
+    <img src="assets/logo/user.png" class="w-7 h-7">
+  </button> 
+  <button #profileButton *ngIf="isLoggedIn" class="flex items-center text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white" (click)="toggleDropdown()">
+    <img [src]="'assets/logo/user.png' || 'assets/logo/user.png'" alt="Profile Picture" class="w-7 h-7 mr-2 cursor-pointer">
+  </button>
+
+  <!-- wishlist -->
+  <button routerLink="wishlist" class="relative inline-flex items-center justify-center p-0 bg-transparent border-none">
+    <img src="assets/logo/heart.png" class="w-7 h-7">
+    <span *ngIf="wishlistCount > 0" class="absolute top-[0.1rem] right-[-0.8rem] bg-black text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+      {{ wishlistCount }}
+    </span>
+  </button>
+  
+  <!-- add to cart -->
+  <button routerLink="cart"  class="relative">
+   <img src="assets/logo/shopping-bag.png" class="w-8 h-8"> 
+    <span class="absolute top-3 -right-0 w-40px h-40px text-sm bg-black text-white rounded-full px-1 flex ">{{ cartCount }}</span>
+  </button>
+  <button (click)="toggleMenu()" class="toggle-menu-button">
+    <img class="toggle block" src="assets/logo/menu.png" width="40" height="40" />
+    <img class="toggle hidden" src="assets/logo/menu.png" width="40" height="40" />
+  </button>
+</div>
+
+<!-- Dropdown Menu -->
+<div *ngIf="showDropdown && isLoggedIn " class="dropdown-menu" [ngStyle]="dropdownPosition" (click)="stopPropagation($event)">
+  <div class="px-4 py-3">
+    <span class="block text-sm text-gray-900 dark:text-white">{{name}}</span>
+    <span class="block text-sm text-gray-500 truncate dark:text-gray-400">{{email}}</span>
+  </div>
+  <hr>
+  <ul class="py-2" aria-labelledby="user-menu-button">
+    <li><a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" routerLink="wishlist">My Wishlist</a></li>
+    <li><a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" routerLink="cart">My Cart</a></li>
+    <li><a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" routerLink="myorder">My Orders</a></li>
+    <li><a (click)="signOut()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer">Sign out</a></li>
+  </ul>
+</div>
+</nav>

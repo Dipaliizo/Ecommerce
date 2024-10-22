@@ -1,0 +1,20 @@
+
+  <div class="loader-container" *ngIf="isLoading">
+    <div class="loader">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <p class="loading-text">Goodness Loading</p>
+    </div>
+  </div>
+  
+  <div class="page-content" [ngClass]="{ 'blur': isLoading }">
+
+  </div>

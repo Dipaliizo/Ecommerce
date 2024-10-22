@@ -1,0 +1,58 @@
+<div class="max-w-7xl mx-auto p-6 mt-6">
+  <div class="flex items-center mb-20 pt-6">
+    <h1 class="text-4xl font-serif flex-grow text-center">Cart Table</h1>
+  </div>
+
+  <!-- Modal for adding/editing product -->
+  <div *ngIf="showModal" class="modal-overlay" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <app-product [product]="selectedProduct" (productUpdated)="updateProduct($event)" (close)="closeModal()"></app-product>
+    </div>
+  </div>
+  
+
+  <!-- No items in cart message -->
+  <div *ngIf="cartItems.length === 0" class="flex flex-col items-center justify-center pt-10">
+    <h1 class="text-3xl font-thin">No product in cart</h1> 
+    <div class="flex justify-center pt-4">
+      <button (click)="openModal()" class="rounded-full bg-red-900 text-white text-lg py-2 px-6">
+        ADD PRODUCT
+      </button>
+    </div>
+  </div>
+
+  <!-- Cart items table -->
+  <div *ngIf="cartItems.length > 0" class="flex flex-col items-center">
+    <div class="w-full md:w-4/5">
+      <table class="w-full text-left mx-auto">
+        <thead>
+          <tr>
+            <th class="px-4 py-2 text-lg font-semibold">Product</th>
+            <th class="px-4 py-2 text-lg font-semibold">Name</th>
+            <th class="px-4 py-2 text-lg font-semibold">Price</th>
+            <th class="px-4 py-2 text-lg font-semibold">Size</th>
+            <th class="px-4 py-2 text-lg font-semibold">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cartItems; let i = index" class="border-b border-gray-200">
+            <td class="px-4 py-2 flex items-center font-semibold text-2xl">
+              <img [src]="item.imageSrc" alt="Product Image" class="w-24 h-24 object-cover mr-4">
+            </td>
+            <td class="px-4 py-2">{{ item.name }}</td>
+            <td class="px-4 py-2">Rs.{{ item.price }}</td>
+            <td class="px-4 py-2">{{ item.size }}</td>
+            <td class="px-4 py-2 space-x-4">
+              <button (click)="editProduct(item)" class="w-8 h-8">
+                <img src="assets/logo/editor.png" alt="Edit" />
+              </button>
+              <button (click)="removeFromCart(i)" class="w-8 h-8">
+                <img src="assets/logo/trash.png" alt="Remove">
+              </button>
+            </td>           
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

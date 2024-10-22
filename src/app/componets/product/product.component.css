@@ -1,0 +1,19 @@
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.top-4 {
+  top: 1rem; /* Adjust as needed */
+}
+
+.right-4 {
+  right: 1rem; /* Adjust as needed */
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

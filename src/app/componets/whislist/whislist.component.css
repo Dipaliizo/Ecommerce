@@ -1,0 +1,46 @@
+.product-card {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .product-card .flex-grow {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .image-zoom {
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .image-zoom:hover {
+    transform: scale(1.1);
+  }
+  
+  .relative {
+    position: relative;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .mt-4 {
+    margin-top: 1rem; 
+  }
+  
+  .ml-4 {
+    margin-left: 1rem; 
+  }
+
+  .wish-empty {
+    text-align: center; 
+  }
+  
+  .empty-wish-image {
+    width: 400px; 
+    max-width: 100%; 
+    height: auto; 
+    margin: 20px 0; 
+  }

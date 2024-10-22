@@ -1,0 +1,280 @@
+<br><br>
+<div class="container mx-auto px-4 py-8 mt-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-14">
+    <!-- Contact Form -->
+     <div class="scrollable-form">
+      <h2 class="text-xl font-bold mb-4 mt-8">Delivery</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <div>
+          <input
+            type="text"
+            id="first-name"
+            class="shadow appearance-none border rounded w-full py-2 px-2 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            [(ngModel)]="firstName"
+            placeholder="First name"
+          />
+        </div>
+        <div>
+          <input
+            type="text"
+            id="last-name"
+            class="shadow appearance-none border rounded w-full py-2 px-2 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            [(ngModel)]="lastName"
+            placeholder="Last name"
+          />
+        </div>
+      </div>
+    
+      <div class="mb-4">
+        <input
+          type="text"
+          id="address"
+          class="shadow appearance-none border rounded w-full py-2 px-2 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          [(ngModel)]="address"
+          placeholder="Address"
+        />
+      </div>
+      <div class="mb-4">
+        <input
+          type="text"
+          id="apartment"
+          class="shadow appearance-none border rounded w-full py-2 px-2 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          [(ngModel)]="apartment"
+          placeholder="Apartment, suite, etc. (optional)"
+        />
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        <div>
+          <input
+            type="text"
+            id="city"
+            class="shadow appearance-none border rounded w-full py-2 px-2 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            [(ngModel)]="city"
+            placeholder="City"
+          />
+        </div>
+        <div>
+          <div class="relative">
+            <select
+              id="state"
+              class="shadow appearance-none border rounded w-full py-2 px-4 text-sm text-gray-700 leading-tight focus:outline-none focus:ring focus:ring-blue-500"
+              [(ngModel)]="state"
+            >
+              <option value="" disabled selected>Select State</option>
+              <option value="Gujarat">Gujarat</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Rajasthan">Rajasthan</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 text-gray-700">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
+        </div>  
+        <div>
+          <input
+            type="text"
+            id="pin-code"
+            class="shadow appearance-none border rounded w-full py-2 px-2 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            [(ngModel)]="pinCode"
+            placeholder="PIN code"
+          />
+        </div>
+      </div>
+      <div class="mb-4">
+        <input
+          type="tel"
+          id="phone"
+          class="shadow appearance-none border rounded w-full py-2 px-2 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          [(ngModel)]="phone"
+          placeholder="Phone"
+        />
+      </div>
+      <div class="mb-4">
+        <input
+          type="checkbox"
+          id="save-information"
+          [(ngModel)]="saveData"
+          (change)="saveDataToLocalStorage()"
+          class="mr-2"
+        />
+        <span class="text-sm text-gray-700" (click)="saveDataToLocalStorage()">Save this information for next time</span>
+      </div>
+      
+      <div id="error-message" *ngIf="errorMessage" class="mt-4 text-red-600 text-center">
+        {{ errorMessage }}
+      </div>
+      
+      
+     <!-- Payment Method -->
+<h2 class="text-xl font-bold mb-4 mt-8">Payment</h2>
+<p>All transactions are secure and encrypted.</p>
+<div class="payment-container">
+  <div class="payment-box">
+    <label>
+      <input type="radio" name="payment-method" id="card-payment" [(ngModel)]="paymentMethod" value="card" />
+      <span>Credit/Debit card</span>
+      <div class="payment-description">
+        
+      </div>
+    </label>
+    <label>
+      <input type="radio" name="payment-method" id="cod-payment" [(ngModel)]="paymentMethod" value="paypal" />
+      <span>Paypal</span>
+    </label>
+    <label>
+      <input type="radio" name="payment-method" id="cod-payment" [(ngModel)]="paymentMethod" value="cod" />
+      <span>Cash on Delivery (COD)</span>
+    </label>
+  </div>
+</div>
+
+<h3 class="text-xl font-bold mb-4 mt-8">Billing address</h3>
+<div class="billing-box">
+  <label>
+    <input type="radio" name="billing-address" [(ngModel)]="showBillingAddress" [value]="false" (change)="showBillingAddress = false" checked />
+    <span>Same as delivery address</span>
+  </label>
+  <label>
+    <input type="radio" name="billing-address" [(ngModel)]="showBillingAddress" [value]="true" (change)="showBillingAddress = true" />
+    <span>Use a different billing address</span>
+  </label>
+</div>
+
+<!-- Conditional Billing Address Form -->
+<div *ngIf="showBillingAddress">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+    <div>
+      <input
+        type="text"
+        id="billing-first-name"
+        class="shadow appearance-none border rounded w-full py-2 px-2 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        [(ngModel)]="billingFirstName"
+        placeholder="First name"
+      />
+    </div>
+    <div>
+      <input
+        type="text"
+        id="billing-last-name"
+        class="shadow appearance-none border rounded w-full py-2 px-2 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        [(ngModel)]="billingLastName"
+        placeholder="Last name"
+      />
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <input
+      type="text"
+      id="billing-address"
+      class="shadow appearance-none border rounded w-full py-2 px-2 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      [(ngModel)]="billingAddress"
+      placeholder="Address"
+    />
+  </div>
+  <div class="mb-4">
+    <input
+      type="text"
+      id="billing-apartment"
+      class="shadow appearance-none border rounded w-full py-2 px-2 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      [(ngModel)]="billingApartment"
+      placeholder="Apartment, suite, etc. (optional)"
+    />
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+    <div>
+      <input
+        type="text"
+        id="billing-city"
+        class="shadow appearance-none border rounded w-full py-2 px-2 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        [(ngModel)]="billingCity"
+        placeholder="City"
+      />
+    </div>
+    <div>
+      <div class="relative">
+        <select
+          id="state"
+          class="shadow appearance-none border rounded w-full py-2 px-4 text-sm text-gray-700 leading-tight focus:outline-none focus:ring focus:ring-blue-500"
+          [(ngModel)]="state"
+        >
+          <option value="" disabled selected>Select State</option>
+          <option value="Gujarat">Gujarat</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Rajasthan">Rajasthan</option>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 text-gray-700">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div>
+      <input
+        type="text"
+        id="billing-pin-code"
+        class="shadow appearance-none border rounded w-full py-2 px-2 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        [(ngModel)]="billingPinCode"
+        placeholder="PIN code"
+      />
+    </div>
+  </div>
+  <div class="mb-4">
+    <input
+      type="tel"
+      id="billing-phone"
+      class="shadow appearance-none border rounded w-full py-2 px-2 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      [(ngModel)]="billingPhone"
+      placeholder="Phone"
+    />
+  </div>
+  <button class="flex justify-start border rounded w-50 py-2 px-2">Save</button>
+</div>
+
+<div class="flex justify-center">  
+  <button 
+    class="bg-gray-900 hover:bg-gray-900 text-white font-bold py-4 px-4 w-full rounded" 
+    (click)="paymentMethod === 'cod' ? navigateToConfirm() : navigateToConfirm()">
+    {{ paymentMethod === 'cod' ? 'Complete order' : 'Pay now' }}
+  </button>
+</div>
+
+</div>
+
+<!-- Cart Product Details -->
+<div class="mt-10">
+  <div class="bg-gray-100 p-4 rounded-lg">
+    <div *ngFor="let item of cartItems; let i = index" class="flex justify-between items-start mb-4">
+      <div class="flex items-center flex-grow">
+        <img [src]="item.imageSrc"
+             alt="{{ item.name }} Image"
+             class="w-16 h-16 rounded-md mr-4"
+        />
+        <div class="flex-grow">
+          <h3 class="text-xl font-bold">{{ item.name }}</h3>
+          <p class="text-gray-600">₹{{ item.price }}</p>
+          <p class="text-gray-600 inline mr-2">{{ item.size }}</p>
+          <p class="text-gray-600 inline">Qty: {{ item.quantity }}</p>
+        </div>
+      </div>
+      <!-- Display the right arrow image only for the first product -->
+      <div *ngIf="i === 0" class="mt-8 mr-8 cursor-pointer">
+        <img src="assets/logo/right-arrow.png" class="w-6 h-6 cursor-pointer" routerLink="/cart">
+      </div>
+    </div>
+    <hr><br>
+    <div class="mb-4">
+      <p class="text-gray-700 font-bold">Subtotal</p>
+      <p class="text-gray-900 font-bold">₹{{ subtotal }}</p>
+    </div>
+    <div class="mb-4">
+      <p class="text-gray-700 font-bold">Total</p>
+      <p class="text-gray-900 font-bold text-2xl">₹{{ total }}</p>
+    </div>
+    <p class="text-gray-600 text-sm">Including ₹10 in taxes</p>
+  </div>
+</div>
+

@@ -1,0 +1,31 @@
+.table-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 9rem; 
+  }
+  
+  .table-container table {
+    width: 50%; 
+  }
+  .spacing {
+    margin-left: 20px; 
+  }
+  
+.order-card {
+  border: 1px solid #d1d5db; 
+  padding: 1rem; 
+  border-radius: 0.5rem; 
+  background-color: white; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.cart-empty {
+  text-align: center; 
+}
+
+.empty-cart-image {
+  width: 400px; 
+  max-width: 100%; 
+  height: auto; 
+  margin: 20px 0; 
+}

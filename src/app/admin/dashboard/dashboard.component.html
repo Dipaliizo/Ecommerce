@@ -1,0 +1,50 @@
+<div class="flex flex-col h-screen">
+    <nav class="navbar p-4 flex items-center bg-gray-100" [ngClass]="{'ml-60': isOpen}">
+        <button (click)="toggleSidebar()" class="p-2 text-white">
+            <img class="toggle block" src="assets/logo/menu.png" width="40" height="40" />
+        </button>
+    </nav>
+
+    <div class="relative flex flex-grow">
+        <div [ngClass]="{'translate-x-0': isOpen, '-translate-x-full': !isOpen}" 
+        class="sidebar text-black p-4 bg-white">
+     
+     <div class="logo-block bg-white p-2 rounded mb-4">
+       <div class="flex items-center">
+         <img src="assets/Galore/PURE AND SURE-logo.jpg" alt="Logo" class="h-14 w-20 mr-1 cursor-pointer" routerLink="/home">
+         <h1 class="text-xl font-semibold">Organic</h1>
+       </div>
+     </div>
+   
+     <div class="flex items-center mb-4 cursor-pointer" routerLink="dashboard">
+      <img src="assets/logo/icons8-dashboard-24.png" width="24" height="24" alt="Dashboard Icon" class="mr-2" />
+      <h2 class="text-lg text-white font-semibold">Dashboard</h2>
+  </div>
+       
+     <ul class="space-y-3">
+      <li><a routerLink="/cartTable" class="block py-2 text-white hover:text-white transition hover-bg">
+        <img src="assets/logo/icons8-table-64.png" width="20" height="20" alt="Product Icon" class="mr-2" />
+        Product</a></li>
+      <li><a routerLink="/product" class="block py-2 text-white hover:text-white transition hover-bg">
+        <img src="assets/logo/icons8-add-product-66.png" width="20" height="20" alt="Product Icon" class="mr-2" />
+        Add Product</a></li>
+      <li><a routerLink="/user" class="block py-2 text-white hover:text-white transition hover-bg">
+        <img src="assets/logo/icons8-user-30.png" width="20" height="20" alt="Product Icon" class="mr-2" />
+        Users</a></li>
+      <li><a (click)="logout()" class="block py-2 text-white hover:text-white transition cursor-pointer hover-bg">
+        <img src="assets/logo/icons8-logout-rounded-50.png" width="20" height="20" alt="Product Icon" class="mr-2" />
+        Logout</a></li>
+  </ul>
+  
+   </div>
+   
+        <div class="flex-1 p-4" [ngClass]="{'ml-64': isOpen}">
+            <!-- Content Area -->
+            <div *ngIf="isCurrentRoute('/dashboard')" class="centered-container">
+              <h1 class="font-semibold text-2xl">Welcome, Admin!</h1>
+          </div>
+          
+            <router-outlet></router-outlet> 
+        </div>
+    </div>
+</div>
