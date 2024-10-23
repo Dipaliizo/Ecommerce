@@ -114,7 +114,5 @@ export class NavbarComponent implements OnInit{
   stopPropagation(event: Event): void {
     event.stopPropagation();
   }  
- 
-  
   
 }
