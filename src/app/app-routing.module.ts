@@ -39,7 +39,7 @@ const routes: Routes = [
   {path:'signup', component:SignupComponent},
   {path:'signin', component:SigninComponent},
   {path:'loading', component:LoadingComponent},
-  {path:'orders/:orderId/:userId',component:OrderDetailsComponent},
+  {path:"orders/:orderId/:userId",component:OrderDetailsComponent},
   //{path:'product', component:ProductComponent},
   {path:'shop', component:ShopComponent},
   {path:'cart', component:CartComponent},

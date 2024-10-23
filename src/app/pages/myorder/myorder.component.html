@@ -10,7 +10,7 @@
             <strong>Sold to:</strong> {{ order.payer }}<br />
             <strong>Status:</strong> {{ order.status }}
           </div>
-          <!-- <div class="ml-4 cursor-pointer" [routerLink]="['/orders', orderId, userId]"> -->
+          <!-- <div class="ml-4 cursor-pointer" [routerLink]="getOrderLink()"> -->
             <div class="ml-4 cursor-pointer" routerLink="/shop">
             <img src="assets/logo/right-arrow.png" class="w-6 h-6">
           </div>

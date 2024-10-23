@@ -11,9 +11,13 @@ export class MyorderComponent implements OnInit {
   orders: any[] = [];
   userId: string | null = null;
   ordersWithItems: any[] = []; 
-orderId: any|string;
+  orderId: string ='';
 
   constructor(private orderService: OrderService, private route: ActivatedRoute) {}
+ 
+  getOrderLink() {
+    return ['/orders', this.orderId, this.userId];
+  }
 
   ngOnInit(): void {
     this.fetchUserOrders();
