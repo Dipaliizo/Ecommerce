@@ -49,10 +49,24 @@
   </div>
   <hr>
   <ul class="py-2" aria-labelledby="user-menu-button">
-    <li><a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" routerLink="wishlist">My Wishlist</a></li>
-    <li><a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" routerLink="cart">My Cart</a></li>
-    <li><a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" routerLink="myorder">My Orders</a></li>
-    <li><a (click)="signOut()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer">Sign out</a></li>
+    <li class="flex items-center">
+      <a class="flex items-center block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" routerLink="wishlist">
+        <img src="assets/logo/wishlist.png" width="22" height="22" alt="wishlist Icon" class="mr-2" />
+        <span>My Wishlist</span>
+      </a>
+    </li>    
+    <li class="flex items-center">
+      <a class="flex items-center block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" routerLink="cart">
+        <img src="assets/logo/shopping-cart.png" width="22" height="22" alt="wishlist Icon" class="mr-2" />
+        My Cart</a></li>
+     <li class="flex items-center">
+      <a class="flex items-center block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" routerLink="myorder">
+        <img src="assets/logo/order.png" width="22" height="22" alt="wishlist Icon" class="mr-2" />
+        My Orders</a></li>
+    <li class="flex items-center">
+      <a (click)="signOut()" class="flex items-center block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer">
+        <img src="assets/logo/logout.png" width="22" height="22" alt="wishlist Icon" class="mr-2" />
+        Sign out</a></li>
   </ul>
 </div>
 </nav>
