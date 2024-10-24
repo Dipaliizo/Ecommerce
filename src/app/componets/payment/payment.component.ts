@@ -67,6 +67,7 @@ export class PaymentComponent {
       const transactionData = {
         transactionId: paymentMethod.id,
         paymentType: paymentMethod.card.brand,
+        cardNumber: paymentMethod.card.checks.last4,
         date: new Date().toISOString(), 
         userId: this.userId, 
         status: 'COMPLETED', 

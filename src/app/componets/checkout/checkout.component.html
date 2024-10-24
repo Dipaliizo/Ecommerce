@@ -236,10 +236,10 @@
 
 <div class="flex justify-center">  
   <button 
-    class="bg-gray-900 hover:bg-gray-900 text-white font-bold py-4 px-4 w-full rounded" 
-    (click)="paymentMethod === 'cod' ? navigateToConfirm() : navigateToConfirm()">
-    {{ paymentMethod === 'cod' ? 'Complete order' : 'Pay now' }}
-  </button>
+  class="bg-gray-900 hover:bg-gray-900 text-white font-bold py-4 px-4 w-full rounded" 
+  (click)="saveDataToLocalStorage(); paymentMethod === 'cod' ? navigateToConfirm() : navigateToConfirm()">
+  {{ paymentMethod === 'cod' ? 'Complete order' : 'Pay now' }}
+</button>
 </div>
 
 </div>

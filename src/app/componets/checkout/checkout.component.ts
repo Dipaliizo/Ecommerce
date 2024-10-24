@@ -58,7 +58,7 @@ loadData(): void {
     this.state = data.state || '';
     this.pinCode = data.pinCode || '';
     this.phone = data.phone || '';
-    this.saveData = data.saveData || false;
+    this.saveData = data.saveData || true;
   }
 }
 
@@ -74,7 +74,6 @@ saveDataToLocalStorage(): void {
       pinCode: this.pinCode,
       phone: this.phone,
       userId: this.userId, 
-      orderId:this.orderId,
       saveData: this.saveData
     };
     localStorage.setItem('shippingData', JSON.stringify(shippingData));
@@ -175,7 +174,6 @@ saveDataToLocalStorage(): void {
   }
   
 
-  
   navigateToConfirm() {
     if (this.validateDeliveryForm()){
     this.generateOrderId(); 

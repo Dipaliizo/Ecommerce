@@ -8,45 +8,28 @@ import { OrderService } from '../../services/order.service';
   styleUrl: './order-details.component.css'
 })
 export class OrderDetailsComponent {
-  orderItems: any[] = [];
-  filteredItems: any[] = [];
-  userId: string = ''; 
+  userId: any; 
   orderId: string = ''; 
+  orderItems: any[] = []; 
+  shippingData: any;
 
   constructor(private route: ActivatedRoute,private orderService: OrderService) {}
  
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      console.log(params); // Check what params are available
-      this.orderId = params['orderId'];
-      this.userId = params['userId'];
-    });
+  loadShippingData(): void {
+    const data = localStorage.getItem('shippingData');
+    if (data) {
+      this.shippingData = JSON.parse(data);
+      console.log('Shipping data loaded:', this.shippingData);
+    }
   }
-  
 
-  
-
-  // ngOnInit() {
-  //   this.route.paramMap.subscribe(params => {
-  //     this.userId = params.get('userId')!;
-  //     this.orderId = params.get('orderId')!;
-  //     this.loadOrderItems();
-  //   });
-  // }
-
-  // loadOrderItems() {
-  //   const storedItems = localStorage.getItem('orderitems');
-  //   if (storedItems) {
-  //     this.orderItems = JSON.parse(storedItems);
-  //     this.filterOrderItems();
-  //   }
-  // }
-
-  // filterOrderItems() {
-  //   this.filteredItems = this.orderItems.filter(item => 
-  //     item.userId === this.userId && item.orderId === this.orderId
-  //   );
-  // }
+  ngOnInit(): void {
+    this.loadShippingData(); 
+    this.orderId = this.route.snapshot.params['orderId']; 
+    this.userId = this.route.snapshot.params['userId'];   
+    this.orderItems = this.orderService.getOrderItems(this.orderId, this.userId);
+    console.log(this.orderItems);
+  }
 }
 
 

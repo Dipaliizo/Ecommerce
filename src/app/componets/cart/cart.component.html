@@ -11,6 +11,7 @@
     </button>
   </div>
   
+  <div class="overflow-x-auto">
   <table *ngIf="cartItems.length > 0" class="w-full text-left">
     <thead>
       <tr>
@@ -50,7 +51,8 @@
       </tr>
     </tbody>
   </table>
-  
+</div>
+
   <div *ngIf="cartItems.length > 0" class="flex flex-col items-end mt-8">
     <h3 class="text-xl font-bold border-b border-gray-500">Total: Rs.{{ total }}</h3>
     <button class="mt-6 bg-red-900 text-white py-4 px-20 rounded" routerLink="/checkout">CHECK OUT</button>
